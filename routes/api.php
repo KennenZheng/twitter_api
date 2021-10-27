@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::post('/user/login-twitter', 'UserAuthController@loginByTwitter');
+
+Route::get('/twitter/time-line', 'TwitterController@getTimeLine');
+Route::post('/twitter/post', 'TwitterController@addPost');
+Route::post('/twitter/reply', 'TwitterController@addRply');
+Route::post('/twitter/retweet', 'TwitterController@addRetweet');
+Route::post('/twitter/star', 'TwitterController@addStar');
+Route::post('/twitter/thread', 'TwitterController@addThread');
+
+
+/*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
