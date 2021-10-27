@@ -26,30 +26,4 @@ class UserService
         $this->authenticationService = $authenticationService;
     }
 
-    public function addUser($type, $name, $email, $plainTextPassword)
-    {
-        if (!in_array($type, UserConstant::TYPES)) {
-            throw new ServiceError('type not allow');
-        }
-        $newUser = $this->userRepository->create(
-            $type,
-            $name,
-            $email,
-            $this->getHasher()->make($plainTextPassword)
-        );
-
-        return $newUser;
-    }
-
-
-    public function updateUser($name, $email, $user_id)
-    {
-        $this->userRepository->update($name, $email, $user_id);
-
-        return true;
-    }
-
-
-
-
 }
